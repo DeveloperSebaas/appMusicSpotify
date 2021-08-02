@@ -1,0 +1,45 @@
+<app-cargando *ngIf="cargando"></app-cargando>
+
+<div class="row inicio" *ngIf="!cargando">
+    <div class="col-2">
+        <img [src]="artista.images[0].url" class="img-thumbnail img-circle">
+    </div>
+    <div class="col">
+        <h3>{{ artista.name }}</h3>
+        <p>
+            <a [href]="artista.external_urls.spotify">
+                Ir a la página del artista
+            </a>
+        </p>
+        <button routerLink="/buscar" class="btn btn-outline-danger" style="width: 150px;">Regresar</button>
+    </div>
+</div>
+
+<div class="row m-5">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of topTracks">
+                    <td>
+                        <img [src]="item.album.images[0].url" class="img-thumb">
+                    </td>
+                    <td> {{ item.album.name}}</td>
+                    <td> {{ item.name }}</td>
+                    <td>
+                        <iframe [src]="item.uri | domseguro" width="300" height="80"
+                        allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

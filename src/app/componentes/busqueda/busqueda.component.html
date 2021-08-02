@@ -1,0 +1,12 @@
+<app-cargando *ngIf="cargando"></app-cargando>
+<br>
+<br>
+<div class="row">
+    <div class="col">
+      <h1>Buscar Artista</h1>
+        <input type="text" #termino (keyup)="buscar(termino.value)"
+        class="form-control">
+    </div>
+</div>
+
+<app-tarjetas *ngIf="!cargando" [items]="artistas"></app-tarjetas>

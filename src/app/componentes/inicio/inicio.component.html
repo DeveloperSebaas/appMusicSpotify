@@ -1,0 +1,10 @@
+<app-cargando *ngIf="cargando"></app-cargando>
+
+<div *ngIf="error">
+    <h2 style="color: red;">Error</h2>
+    <p>
+        {{ mensajeError }}
+    </p>
+</div>
+
+<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
